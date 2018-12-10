@@ -209,18 +209,60 @@ public class Picture extends SimplePicture
     public void mirrorHorizontal()
     {
         Pixel[][] pixels = this.getPixels2D();
-        Pixel leftPixel = null;
-        Pixel rightPixel = null;
+        Pixel topPixel = null;
+        Pixel botPixel = null;
         int width = pixels.length;
         for (int row = 0; row < width/2; row++)
         {
             for (int col = 0; col < pixels[0].length ; col++)
             {
-                leftPixel = pixels[row][col];
-                rightPixel = pixels[width - 1 - row][col];
-                rightPixel.setColor(leftPixel.getColor());
+                topPixel = pixels[row][col];
+                botPixel = pixels[width - 1 - row][col];
+                topPixel.setColor(botPixel.getColor());
             }
         } 
+    }
+
+    public void mirrorHorizontalBotToTop()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel topPixel = null;
+        Pixel botPixel = null;
+        int width = pixels.length;
+        for (int row = 0; row < width/2; row++)
+        {
+            for (int col = 0; col < pixels[0].length ; col++)
+            {
+                topPixel = pixels[row][col];
+                botPixel = pixels[width - 1 - row][col];
+                botPixel.setColor(topPixel.getColor());
+            }
+        } 
+    }
+
+    public void mirrorDiagonal()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel topDPixel = null;
+        Pixel botDPixel = null;
+        int width = pixels.length;
+        for (int row = 0; row < pixels.length; row++)
+        {
+            for (int col = 0; col < pixels[0].length ; col++)
+            {
+                if(row == col){
+                    int dRow = row;
+                    int dCol = col;
+                    if(row > dRow && col> dCol){
+                        topDPixel = pixels[row][col];
+                        botDPixel = pixels[width - 1 - row][col];
+                        
+
+                    }
+                    botDPixel.setColor(topDPixel.getColor());
+                }
+            } 
+        }
     }
 
     /** Mirror just part of a picture of a temple */
