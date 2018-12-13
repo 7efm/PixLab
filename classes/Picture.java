@@ -229,7 +229,7 @@ public class Picture extends SimplePicture
         Pixel topPixel = null;
         Pixel botPixel = null;
         int width = pixels.length;
-        for (int row = 0; row < width/2; row++)
+        for (int row = 0; row < width; row++)
         {
             for (int col = 0; col < pixels[0].length ; col++)
             {
@@ -245,22 +245,18 @@ public class Picture extends SimplePicture
         Pixel[][] pixels = this.getPixels2D();
         Pixel topDPixel = null;
         Pixel botDPixel = null;
-        int width = pixels.length;
-        for (int row = 0; row < pixels.length; row++)
+        int length = pixels.length;
+        int width = pixels[0].length;
+        for (int row = 0; row < length; row++)
         {
-            for (int col = 0; col < pixels[0].length ; col++)
+            for (int col = 0; col < width; col++)
             {
-                if(row == col){
-                    int dRow = row;
-                    int dCol = col;
-                    if(row > dRow && col> dCol){
-                        topDPixel = pixels[row][col];
-                        botDPixel = pixels[width - 1 - row][col];
-                        
-
-                    }
+                if(row > col){
+                    topDPixel = pixels[row][col];
+                    botDPixel = pixels[col][row];
                     botDPixel.setColor(topDPixel.getColor());
                 }
+                
             } 
         }
     }

@@ -62,7 +62,7 @@ public class PictureTester
     public static void testKeepOnlyBlue(){
         Picture beach = new Picture("beach.jpg");
         beach.explore();
-        beach.zeroRed(); beach.zeroGreen();
+        beach.zeroRed();beach.zeroGreen();
         beach.explore();
 
     }
